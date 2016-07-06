@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="'Weather in ' + ${city}">Weather in Moscow</title>
+</head>
+<body>
+<h1 th:text="'Weather in ' + ${city}">Weather in Moscow</h1>
+<table>
+    <tr>
+        <th>Temperature, C</th>
+        <th>Humidity, %</th>
+        <th>Pressure, mm</th>
+    </tr>
+    <tr>
+        <td th:text="${status.tempCelcius}">15.5</td>
+        <td th:text="${status.humidity}">88</td>
+        <td th:text="${status.pressure}">1400</td>
+    </tr>
+</table>
+</body>
+</html>

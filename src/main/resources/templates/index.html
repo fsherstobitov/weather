@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <form method="get" action="/weather_status">
+        <label>City:</label>
+        <select name="city">
+            <option th:each="city : ${cityList}" th:value="${city}" th:text="${city}" th:selected="${city == selectedCity}"/>
+        </select><br/>
+        <label>Weather service:</label>
+        <select name="service">
+            <option th:each="service : ${serviceList}" th:value="${service}" th:text="${service}" th:selected="${service == selectedService}"/>
+        </select><br/>
+        <input type="submit" value="OK"/>
+    </form>
+</body>
+</html>
