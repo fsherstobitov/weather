@@ -16,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CachingWeatherRepository implements WeatherRepository {
 
     private static final Map<String, WeatherStatus> statusCache = new ConcurrentHashMap<>();
+    private static final long UPDATE_INTERVAL = 10;
 
     private final WeatherServiceFactory factory;
 
@@ -32,7 +33,7 @@ public class CachingWeatherRepository implements WeatherRepository {
             status = updateCacheAndGet(cityName, cacheKey, service);
         } else {
             status = statusCache.get(cacheKey);
-            if (distanceInMinutes(status.getLastUpdate(), LocalDateTime.now()) > 10) {
+            if (distanceInMinutes(status.getLastUpdate(), LocalDateTime.now()) > UPDATE_INTERVAL) {
                 status = updateCacheAndGet(cityName, cacheKey, service);
             }
         }
